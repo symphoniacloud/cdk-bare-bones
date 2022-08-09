@@ -57,6 +57,8 @@ Further, Node and NPM should be correctly setup. This project currently assumes 
 
 > The terminal examples below assume a Bash / Zsh shell, or equivalent, with the leading `$` signifiying the terminal prompt. If you are using Windows you will need to adjust these commands if using a different type of terminal. 
 
+### Deploy
+
 To deploy this application to AWS for the first time, run the following:
 
 ```shell
@@ -78,6 +80,38 @@ The deployed application is the smallest possible CDK app - the only deployed re
 
 > Once you've run `npm install` once in the directory you won't need to again
 
+### Deploy with non-default stack name, and other parameters
+
+In situations where you may deploy the same app multiple times with different names to the same AWS account you will
+need to override the default stack name. This is common, for example, for development accounts.
+
+To do this you can run the following:
+
+```shell
+$ npm run deploy -- --context stackName=my-app-stack
+...
+ ✅  AppStack (my-app-stack)
+
+✨  Deployment time: 22.64s
+
+Stack ARN:
+arn:aws:cloudformation:us-east-1:123456789012:stack/my-app-stack/12345678-1234-1234-1234-123456789ab
+
+✨  Total time: 25.23s
+```
+
+You can specify other parameters in the same way, e.g. to use [hotswap deployment](https://docs.aws.amazon.com/cdk/v2/guide/cli.html#cli-deploy) you can run the following:
+
+```shell
+$ npm run deploy -- --hotswap
+...
+⚠️ The --hotswap flag deliberately introduces CloudFormation drift to speed up deployments
+⚠️ It should only be used for development - never use it for your production Stacks!
+AppStack (app-stack): deploying...
+```
+
+### Teardown
+
 To tear down the stack, run the following. **IMPORTANT** - if you haven't made any changes to the project this will delete
 the default stack (`app-stack`) in your Account + Region.
 
@@ -89,6 +123,20 @@ AppStack (app-stack): destroying...
 
  ✅  AppStack (app-stack): destroyed
 ```
+
+If you want to teardown a stack with name that's not the default, you can add `-- --context stackName=my-app-stack`, the same as with `deploy`.
+
+### Other CDK commands
+
+Another command in _package.json_ is `cdk-diff`, which runs just like `deploy` and `cdk-destroy` above.
+
+You can also run the command `cdk-command`, and set the `command` flag to any valid [cdk CLI](https://docs.aws.amazon.com/cdk/v2/guide/cli.html) command, e.g. the following is exactly the same as running `cdk deploy` with a custom stack name:
+
+```shell
+$ npm run cdk-command --command=deploy -- --context stackName=my-app-stack
+```
+
+The point of using `npm run cdk-command --command=deploy` vs `npx cdk command` is to set to the cdk output directory in a consistent way.
 
 ## Extending
 
