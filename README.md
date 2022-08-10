@@ -249,3 +249,10 @@ There are various ways of managing Node, but here is my current preferred method
 
 1. [Install NVM](https://github.com/nvm-sh/nvm#installing-and-updating) in my user-global environment
 2. Use [NVM's shell integration](https://github.com/nvm-sh/nvm#deeper-shell-integration) to automatically load the correct version of Node according to the [.nvmrc](.nvmrc) file
+
+
+## Questions / Feedback / etc.
+
+If you have questions related to this example please add a Github issue, or drop me a line
+at [mike@symphonia.io](mailto:mike@symphonia.io) . I'm also on Twitter
+at [@mikebroberts](https://twitter.com/mikebroberts) .
