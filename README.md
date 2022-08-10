@@ -39,13 +39,11 @@ You can you use this template repo as the base for your own TypeScript + CDK app
 
 The name of this project says "bare-bones", and I mean it! There's no testing, deployment automation ("CD"), no actual resources, no source code.
 
-If you'd like an example with more functionality I also provide the following template projects:
-
-> **TODO** - I wrote these larger examples **BEFORE** this bare-bones project, and I still need to update them to use the same choices I've made in this project
+If you'd like an example with more functionality I also provide these template projects that are extensions of this one:
 
 * [Coffee Store V2](https://github.com/symphoniacloud/coffee-store-v2) - Adds a Lambda Function resource; source code + build for the Lambda Function; unit + in-cloud integration tests
-* [Coffee Store Web Basic](https://github.com/symphoniacloud/coffee-store-web) - Website hosting on AWS with CloudFront and S3
-* [Coffee Store Web Full](https://github.com/symphoniacloud/coffee-store-web-demo) - A further extension of _Coffee Store Web Basic_ that is a real working demo of a production-ready website project, including TLS certificates, DNS hosting, Github Actions Workflows, multiple CDK environments (prod vs test vs dev)
+* [Coffee Store Web Basic](https://github.com/symphoniacloud/coffee-store-web-basic) - Website hosting on AWS with CloudFront and S3
+* [Coffee Store Web Full](https://github.com/symphoniacloud/coffee-store-web-full) - A further extension of _Coffee Store Web Basic_ that is a real working demo of a production-ready website project, including TLS certificates, DNS hosting, Github Actions Workflows, multiple CDK environments (prod vs test vs dev)
 
 ## Prerequisites
 
@@ -144,7 +142,7 @@ To start with you might want to create your own Github repository based on using
 
 Since this is a "bare-bones" template you will need to extend it for your own needs. A few ideas to kick you off are as follows:
 
-* The entrypoint for your CDK deployment is in [_App.ts_](src/cdk/App.ts) .
+* The entrypoint for your CDK deployment is in [_app.ts_](src/cdk/app.ts) .
   * You will likely want to rename the `AppStack` class, the ID of the instantiated `AppStack`, and also change the default stack name (`app-stack`)
   * You should start adding your resources to this file too
 * The "stack properties" in this template are just the environment and stack name, but you will likely want to extend those too.
